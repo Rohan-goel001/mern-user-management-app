@@ -1,31 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/User');
 
-// Home
-router.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-// GET all users
+// Get all users
 router.get('/users', async (req, res) => {
   const users = await User.find();
   res.json(users);
 });
 
-// POST user
+// Add user
 router.post('/add-user', async (req, res) => {
   const user = new User(req.body);
   await user.save();
   res.send("User saved");
 });
 
-// DELETE user
+// Delete user
 router.delete('/delete-user/:id', async (req, res) => {
   await User.findByIdAndDelete(req.params.id);
   res.send("User deleted");
 });
 
-// UPDATE user
+// Update user
 router.put('/update-user/:id', async (req, res) => {
   await User.findByIdAndUpdate(req.params.id, req.body);
   res.send("User updated");

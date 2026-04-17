@@ -1,5 +1,9 @@
 # MERN User Management App
 
+## 📸 Preview
+
+![App Screenshot](./image.png)
+
 ## 🚀 Features
 
 * Add user
